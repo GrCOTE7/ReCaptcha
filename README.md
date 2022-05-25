@@ -42,6 +42,11 @@ Now: With Git, under the **BasicWn** tag, **you have got a fresh installation of
 https://www.google.com/recaptcha/admin
 
 and copy in ***.env*** your site key and secret key (See ***.env_example*** again...)
+
+## The challenge if you accept if, is to succeed with reCaptcha with ajax Feature in WinterCMS
+
+Keep in the *form* tag, the data-request / data-attach-loading, etc... And succeed with recaptcha
+
 ## Have a good day, and a good use of this code, and don't hesitate to contribute to its evolutions by Pull Requests :-) ! @ Bi1tô* !
 
 ### ***Special thanks to Luke Towers & Dreanad, always 'At top', that all of us can find and dial for help and more in <a href="https://discord.com/channels/816852513684193281/817881442125742160" title="Toujours présents pour aider">Espace de Dial**</a>***

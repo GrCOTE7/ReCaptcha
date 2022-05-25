@@ -8,7 +8,7 @@ namespace GrCOTE7\ReCaptcha\Components;
 
 use Cms\Classes\ComponentBase;
 
-class ReCaptcha extends ComponentBase
+class ReCaptcha3 extends ComponentBase
 {
 	/**
 	 * Gets the details for the component.
@@ -16,7 +16,7 @@ class ReCaptcha extends ComponentBase
 	public function componentDetails()
 	{
 		return [
-			'name'        => 'ReCaptcha Component',
+			'name'        => 'ReCaptcha3 Component',
 			'description' => 'No description provided yet...',
 		];
 	}

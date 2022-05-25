@@ -1,45 +1,14 @@
-{# <script src="https://www.google.com/recaptcha/api.js"></script> #}
-<script>
-    // function onSubmit(token) {
-    //   document.getElementById("re-form-email").submit();
-    //   grecaptcha.execute();
-    // }
-    //var onSubmit = function(token) {
-        //e.preventDefault();
-       // console.log('success!');
-        //grecaptcha.ready(function() {
-            //grecaptcha.execute('SITE_KEY', {action: 'submit'}).then(function(token) {
-                // Add your logic to submit to your backend server here.
-        // });
-        //});
-     //   };
-
-        /*
-        var onloadCallback = function() {
-          grecaptcha.render('submit', {
-            'sitekey' : 'SITE_KEY',
-            'callback' : onSubmit
-          });
-        };
-        */
-</script>
-
-
-<script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ sitekey }}"></script>
 
 <script>
     function onSubmit(token) {
-      document.getElementById("demo-form").submit();
+      document.getElementById("re-form-email").submit();
     }
   </script>
 
 <div class="content">
+    <hr>
     <p>The reCaptcha component is added</p>
-    {# <small>oOo</small> #}
-    {# {{ dump(data) }} #}
-    {# <small>{{ dump(vars) }}</small> #}
-
-    {# {{ vars['Header'] }} #}
 
     <div class="{% if  vars['method']== 'GET' %}green{% else %}red{% endif %}">
         {% for key, val in vars %}
@@ -80,7 +49,7 @@
             </p>
         </div>
 
-        <input type="text" name="g-recaptcha-response" id="g-recaptcha-response" value="123"></input>
+        <input type="text" name="g-recaptcha-response" id="g-recaptcha-response"></input>
 
         {# <div id="recaptcha" class="g-recaptcha"></div> #}
 
@@ -106,52 +75,3 @@
     </form>
 </div>
 
-{#
-<script type="text/javascript">
-    $(document).on('submit', '#re-form-email', function(e) {
-        //e.preventDefault();
-
-        grecaptcha.ready(function() {
-            grecaptcha.execute('SITE_KEY', {
-                action: 'application_form'
-            }).then(function(token) {
-
-                let formData = {
-                    name: $('#name').val(),
-                    token: token,
-                    action: 'application_form'
-                };
-
-                $.post('/a/v3/recaptchaVerify.php', formData, function(result) {
-                    console.log(result);
-                    $('#result').html(result);
-                });
-
-            });
-        });
-    });
-</script> #}
-    {# <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" #}
-    {# <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script> #}
-{# <script>
-    function onClick(e) {
-        e.preventDefault();
-
-        jQuery(function($){
-            grecaptcha.ready(function() {
-                grecaptcha.execute('SITE_KEY', {action: '/tr2'}).then(function(token) {
-                    console.log('soumis');
-                    // Add your logic to submit to your backend server here.
-                });
-            });
-            console.log("Envoi GGle");
-            //  grecaptcha.execute();
-            //$( "#sendButton" ).on('click', function() {
-            //    $( this ).slideUp();
-            //});
-            // $("#subscribe").click();
-        });
-    }
-</script> #}

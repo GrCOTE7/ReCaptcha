@@ -48,8 +48,9 @@ class Plugin extends PluginBase
 	public function registerComponents(): array
 	{
 		return [
-			'GrCOTE7\ReCaptcha\Components\Url'       => 'url',
-			'Grcote7\ReCaptcha\Components\ReCaptcha' => 'recaptcha',
+			'GrCOTE7\ReCaptcha\Components\Url'        => 'url',
+			'Grcote7\ReCaptcha\Components\ReCaptcha'  => 'recaptcha',
+			'Grcote7\ReCaptcha\Components\ReCaptcha3' => 'recaptcha3',
 		];
 	}
 
