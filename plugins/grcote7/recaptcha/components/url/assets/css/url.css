@@ -1,0 +1,13 @@
+.bg1 {
+    text-align: right;
+    font-size: .77em;
+    display: block;
+    background-color: rgb(124, 250, 250);
+    border: 1px #777 solid;
+    border-radius: 5px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 0.3em 1em .3em;
+    line-height: 0.7em;
+    font-weight:500;
+}

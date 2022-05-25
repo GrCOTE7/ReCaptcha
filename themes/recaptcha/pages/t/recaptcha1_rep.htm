@@ -1,0 +1,82 @@
+title = "tr1Rep"
+url = "/tr1rep"
+layout = "recaptcha/recaptcha"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $secretkey= env('RECAPTCHA_SECRET_KEY');
+
+    $this['description'] = $_POST['description'];
+
+    // echo '<PRE>';
+    // print_r($_POST);
+    // echo '</PRE>';
+
+    $this['method'] = $_SERVER['REQUEST_METHOD'];
+    $this['responseExists'] = false;
+    $this['repGgle'] = $_POST['g-recaptcha-response'] ?? 'Captcha absent ?!?';
+
+    if ($this['method']=='POST' && isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+
+        $this['responseExists'] = true;
+
+        $url =  "https://www.google.com/recaptcha/api/siteverify?secret={$secretkey}&response={$_POST['g-recaptcha-response']}";
+        // die($url);
+
+        if (!function_exists('curl_version')){
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_HEADER, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($curl);
+        }
+        else {
+            $response = file_get_contents($url);
+        }
+        $this->response = json_decode($response);
+
+        // echo '<PRE>';
+        //     print_r($this->response);
+        // echo '</PRE>';
+
+        if ($this->response->success) {
+            $sender = $_POST['email'] ?? '???';
+            $headers = "From: Feedback <$sender>";
+            // mail('lio@bl.com', 'Test TR par '.$sender, 'ok', $headers);
+            $this['repTrOK']  = 'Formulaire bien soumis par '.$sender.' !';
+            $this['response'] = $this->response;
+        }
+    }
+}
+?>
+==
+<div class="content gc7">
+    <a href="/tr1">TR 1</a> - <strong>Response of {{ description }}</strong>
+    <hr>
+
+    <h6>{{repGgle|raw}}</h6>
+    <hr>
+
+    Réponse TR : {{ response|join(', ',' et ') }}
+
+    {% if responseExists %}
+        {% if repTrOK %}
+            <br>Success → <strong>{{ repTrOK }}</strong>
+            <hr>
+            Method: {{ method }}<br>
+            ReCaptcha Score Response: {{ response.score }}
+
+        {% else %}
+            <div class="btn btn-outline-danger disabled bold" disabled>
+            Captcha non valide !
+            </div>
+        {% endif %}
+    {% elseif method != 'POST' %}
+        <div class="btn btn-outline-danger disabled bold" disabled>
+        Methode non autorisée !
+        </div>
+
+{% endif %}
+</div>

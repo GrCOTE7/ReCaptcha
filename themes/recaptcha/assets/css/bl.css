@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-weight: 400;
+    font-size: .95em;
+}
+
+.content {
+    width: 95%;
+    margin: 1em auto;
+}
+
+.linksgc7 {
+    margin: 0;
+    padding-left: 3%;
+}
+
+.green {
+    color: rgb(112, 179, 13);
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.centergc7 {
+    width: 97%;
+    margin: 10em auto 0;
+    text-align: justify;
+    padding: 0;
+}
+
+.blocemailggle {
+    border: 1px solid black;
+    border-radius: 7px;
+    color: grey;
+    padding: 5px;
+    background-color: #ddd;
+}
+
+.ggle {
+    font-size: 0.7em;
+    padding: 0;
+    margin: 0;
+}
+
+.grecaptcha-badge {
+    /* visibility: hidden; */
+    visibility: visible;
+}

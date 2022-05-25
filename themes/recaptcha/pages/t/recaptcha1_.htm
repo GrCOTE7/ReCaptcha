@@ -1,0 +1,44 @@
+title = "ReCaptcha 1"
+description = "Simple Form with reCaptcha v3 (No Ajax)"
+url = "/tr1"
+layout = "recaptcha/recaptcha"
+is_hidden = 0
+==
+<?php
+use Cache;
+
+function onStart(){
+    $this['sitekey']= env('RECAPTCHA_SITE_KEY');
+
+    // Cache::flush();
+    $this->addJs('https://www.google.com/recaptcha/api.js');
+    // echo $_SERVER['REMOTE_ADDR'];
+}
+?>
+==
+<script>
+    function onSubmit(token) {
+      document.getElementById("form-email").submit();
+    }
+</script>
+
+<div class="content gc7">
+    <h3>{{ this.page.description }}</h3>
+</div>
+
+<div class="content gc7">
+    <form action="/tr1rep" method="POST" id="form-email">
+
+        <input type="hidden" name="description" value="{{ this.page.description }}" />
+
+        <div class="mb-3">
+            <label for="email" class="form-label">
+                Votre email
+            </label>
+            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="{{sitekey}}" data-callback='onSubmit'
+        data-action='submit'>Submit</button>
+    </form>
+</div>

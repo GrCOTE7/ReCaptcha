@@ -1,0 +1,24 @@
+title = "ReCaptcha 2"
+url = "/tr2"
+layout = "recaptcha/recaptcha"
+description = "Test de recaptcha + ajax"
+is_hidden = 0
+
+[recaptcha]
+==
+<?php
+use Cache;
+
+function onStart(){
+    // Cache::flush();
+    // $this->addJs('https://www.google.com/recaptcha/api.js');
+    // echo $_SERVER['REMOTE_ADDR'];
+}
+?>
+==
+<div class="linksgc7">
+    <a href="http://recaptcha/tr2">Tr2</a> |
+    <a href="http://recaptcha/tr2?_token=abc&email=djksufhds@gg.com&recaptcha-response=sdfghjkgku">Tr2 Params</a>
+</div>
+
+{% component 'recaptcha' %}

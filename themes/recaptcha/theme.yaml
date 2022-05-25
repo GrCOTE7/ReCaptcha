@@ -1,0 +1,7 @@
+name: ReCAPTCHA
+description: 'Recaptcha Theme'
+author: GrCOTE7
+homepage: 'http://recaptcha'
+code: ReCAPTCHA
+form: config/fields.yaml
+translate: config/lang.yaml

@@ -1,0 +1,66 @@
+description = "Simple minimalist layout with Bootstrap 5.1.3"
+
+[url]
+==
+<?php
+function onStart(){
+    // $this->addCss
+    //
+    $this['var']=123; // → {{ var }} in Twig
+}
+?>
+==
+    {# [url] #}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ this.page.title }} | {{ this.theme.data.site_name }} </title>
+
+    <meta name="description" content="{{ this.page.description }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+    <link rel="shortcut icon" href="/a/src/icons/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="{{ [
+        '~/a/src/css/bootstrap513.min.css',
+        'assets/css/bl.css',
+		]|theme }}">
+
+    {% placeholder head %}
+    {% styles %}
+
+</head>
+
+<body>
+
+    {% partial 't/nav' %}
+
+    {% component 'url' %}
+
+    {% flash %}
+    <div class="alert alert-{{ type }}">
+        {{ message }}
+    </div>
+    {% endflash %}
+
+    {% page %}
+
+    <script type="text/javascript" src="{{ [
+        '~/a/src/js/jquery360.min.js',
+        '~/a/src/js/bootstrap513.min.js',
+        'assets/js/nav.js',
+        'assets/js/main.js'
+    ]|theme }}"></script>
+
+    {% framework extras %}
+
+    {% scripts %}
+
+</body>
+
+</html>

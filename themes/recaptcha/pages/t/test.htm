@@ -1,0 +1,19 @@
+title = "Test"
+url = "/t"
+layout = "recaptcha/recaptcha"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    include './a/t/inc/t.php';
+    $data         = $this['data'];
+    $this['nb']   = array_shift($data);
+    $this['type'] = array_shift($data);
+    $this['data'] = $data;
+}
+?>
+==
+<div class="content gc7">
+    <h1>{{ nb }} {{ type }}{% if nb > 1 %}s{% endif %}</h1>
+    {{ data |join(', ', ' et ')}}.
+</div>
