@@ -2,7 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 
-class ReCaptcha3 extends ComponentBase
+class ReCaptcha4 extends ComponentBase
 {
     /**
      * Gets the details for the component
@@ -10,7 +10,7 @@ class ReCaptcha3 extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'ReCaptcha3 Component',
+            'name'        => 'ReCaptcha4 Component',
             'description' => 'No description provided yet...'
         ];
     }

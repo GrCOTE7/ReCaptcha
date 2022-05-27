@@ -1,8 +1,10 @@
-title = "ReCaptcha 1"
-description = "Simple Form with reCaptcha v3 (No Ajax)"
-url = "/tr1"
+title = "ReCaptcha 3"
+url = "/tr3"
 layout = "recaptcha/recaptcha"
+description = "Simple Form with reCaptcha v3 (No Ajax) by component"
 is_hidden = 0
+
+[recaptcha3]
 ==
 <?php
 use Cache;
@@ -25,11 +27,15 @@ function onStart(){
 
 <div class="content gc7">
     <h3>{{ this.page.description }}</h3>
-    <p>Use 2 files PHP</p>
+    <p>Use just this file PHP</p>
 </div>
 
 <div class="content gc7">
-    <form action="/tr1rep" method="POST" id="form-email">
+    {% component 'recaptcha3' %}
+</div>
+
+<div class="content gc7">
+    <form action="/tr2" method="POST" id="form-email">
 
         <input type="hidden" name="description" value="{{ this.page.description }}" />
 

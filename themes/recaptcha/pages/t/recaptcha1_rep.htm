@@ -1,4 +1,4 @@
-title = "tr1Rep"
+title = "ReCaptcha 1 Response"
 url = "/tr1rep"
 layout = "recaptcha/recaptcha"
 is_hidden = 0
@@ -59,7 +59,7 @@ function onStart(){
     <h6>{{repGgle|raw}}</h6>
     <hr>
 
-    Réponse TR : {{ response|join(', ',' et ') }}
+    Réponse TR : {{ response|join(', ',' et ') }}<br>
 
     {% if responseExists %}
         {% if repTrOK %}

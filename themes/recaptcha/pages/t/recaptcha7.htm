@@ -1,19 +1,20 @@
-title = "ReCaptcha 3"
-url = "/tr3"
+title = "ReCaptcha 7"
+url = "/tr7"
 layout = "recaptcha/recaptcha"
 description = "Test de recaptcha + ajax by ... ?"
 is_hidden = 0
 
-[recaptcha3]
+[recaptcha7]
 ==
 <?php
-// use Cache;
+use Cache;
 
-// function onStart(){
+function onStart(){
+    $this['sitekey']= env('RECAPTCHA_SITE_KEY');
     // Cache::flush();
-    // $this->addJs('https://www.google.com/recaptcha/api.js');
+    $this->addJs('https://www.google.com/recaptcha/api.js');
     // echo $_SERVER['REMOTE_ADDR'];
-// }
+}
 ?>
 ==
 <div class="linksgc7">
@@ -22,5 +23,5 @@ is_hidden = 0
 </div>
 
 <div class="content">
-    {% component 'recaptcha3' %}
+    {% component 'recaptcha7' %}
 </div>

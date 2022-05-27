@@ -1,6 +1,6 @@
-title = "ReCaptcha 1"
-description = "Simple Form with reCaptcha v3 (No Ajax)"
-url = "/tr1"
+title = "ReCaptcha 2"
+description = "Simple Form with reCaptcha v3 (No Ajax) in a single file"
+url = "/tr2"
 layout = "recaptcha/recaptcha"
 is_hidden = 0
 ==
@@ -25,11 +25,11 @@ function onStart(){
 
 <div class="content gc7">
     <h3>{{ this.page.description }}</h3>
-    <p>Use 2 files PHP</p>
+    <p>Use just this file PHP</p>
 </div>
 
 <div class="content gc7">
-    <form action="/tr1rep" method="POST" id="form-email">
+    <form action="/tr2" method="POST" id="form-email">
 
         <input type="hidden" name="description" value="{{ this.page.description }}" />
 

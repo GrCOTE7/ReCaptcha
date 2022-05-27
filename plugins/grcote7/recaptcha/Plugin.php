@@ -49,8 +49,11 @@ class Plugin extends PluginBase
 	{
 		return [
 			'GrCOTE7\ReCaptcha\Components\Url'        => 'url',
-			'Grcote7\ReCaptcha\Components\ReCaptcha'  => 'recaptcha',
 			'Grcote7\ReCaptcha\Components\ReCaptcha3' => 'recaptcha3',
+			'Grcote7\ReCaptcha\Components\ReCaptcha4' => 'recaptcha4',
+			'Grcote7\ReCaptcha\Components\ReCaptcha5' => 'recaptcha5',
+			'Grcote7\ReCaptcha\Components\ReCaptcha6' => 'recaptcha6',
+			'Grcote7\ReCaptcha\Components\ReCaptcha7' => 'recaptcha7',
 		];
 	}
 
