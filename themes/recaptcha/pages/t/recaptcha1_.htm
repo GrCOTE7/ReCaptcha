@@ -10,7 +10,7 @@ use Cache;
 function onStart(){
     $this['sitekey']= env('RECAPTCHA_SITE_KEY');
 
-    // Cache::flush();
+    Cache::flush();
     $this->addJs('https://www.google.com/recaptcha/api.js');
     // echo $_SERVER['REMOTE_ADDR'];
 }
@@ -18,13 +18,14 @@ function onStart(){
 ==
 <script>
     function onSubmit(token) {
-    console.log('soumis');
-      document.getElementById("re-form-email").submit();
+        // console.log('Soumis');
+        document.getElementById("form-email").submit();
     }
 </script>
 
 <div class="content gc7">
     <h3>{{ this.page.description }}</h3>
+    <p>Use 2 files PHP</p>
 </div>
 
 <div class="content gc7">
@@ -36,10 +37,9 @@ function onStart(){
             <label for="email" class="form-label">
                 Votre email
             </label>
-            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
+            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control"/>
         </div>
 
-        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="{{sitekey}}" data-callback='onSubmit'
-        data-action='submit'>Submit</button>
+        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="{{sitekey}}" data-callback='onSubmit' data-action='submit'>Submit</button>
     </form>
 </div>
