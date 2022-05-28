@@ -30,7 +30,7 @@ class ReCaptcha7 extends ComponentBase
 	}
 
 	public function onRun()
-	{
+	{ $this->page['momo'] ='Quand la page arrive, c est ici que tu as le résultat...';
 		$sitekey               = env('RECAPTCHA_SITE_KEY');
 		$this->page['sitekey'] = $sitekey;
 		// echo $sitekey;
@@ -46,7 +46,7 @@ class ReCaptcha7 extends ComponentBase
 	}
 
 	public function onSubscribe()
-	{
+	{	$this->page['momo'] ='Quand la page reviens, c est ici que tu en as le résultat :-)';
 		$sitekey               = env('RECAPTCHA_SITE_KEY');
 		$this->page['sitekey'] = $sitekey;
 		$this->getVars();

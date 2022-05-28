@@ -5,7 +5,8 @@
  */
 
 return [
-  /*
+
+    /*
     |--------------------------------------------------------------------------
     | Mail Driver
     |--------------------------------------------------------------------------
@@ -20,9 +21,9 @@ return [
     'driver' => env('MAIL_DRIVER', 'smtp'),
     */
 
-  'driver' => env('MAIL_DRIVER', 'sendmail'),
+    'driver' => env('MAIL_DRIVER', 'sendmail'),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
     |--------------------------------------------------------------------------
@@ -33,9 +34,9 @@ return [
     |
     */
 
-  'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
     |--------------------------------------------------------------------------
@@ -46,9 +47,9 @@ return [
     |
     */
 
-  'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 587),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Global "From" Address
     |--------------------------------------------------------------------------
@@ -59,12 +60,12 @@ return [
     |
     */
 
-  'from' => [
-    'address' => 'noreply@domain.tld',
-    'name'    => 'Winter CMS',
-  ],
+    'from' => [
+        'address' => 'noreply@domain.tld',
+        'name' => 'Winter CMS',
+    ],
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
     |--------------------------------------------------------------------------
@@ -75,9 +76,9 @@ return [
     |
     */
 
-  'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
     |--------------------------------------------------------------------------
@@ -88,9 +89,9 @@ return [
     |
     */
 
-  'username' => env('MAIL_USERNAME', null),
+    'username' => env('MAIL_USERNAME', null),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
     |--------------------------------------------------------------------------
@@ -101,9 +102,9 @@ return [
     |
     */
 
-  'password' => env('MAIL_PASSWORD', null),
+    'password' => env('MAIL_PASSWORD', null),
 
-  /*
+    /*
     |--------------------------------------------------------------------------
     | Sendmail System Path
     |--------------------------------------------------------------------------
@@ -114,18 +115,21 @@ return [
     |
     */
 
-  'sendmail' => '/usr/sbin/sendmail -bs',
-
-  /*
-    |--------------------------------------------------------------------------
-    | Log Channel
-    |--------------------------------------------------------------------------
-    |
-    | If you are using the "log" driver, you may specify the logging channel
-    | if you prefer to keep mail messages separate from other log entries
-    | for simpler reading. Otherwise, the default channel will be used.
-    |
-    */
-
-  // 'log_channel' => env('MAIL_LOG_CHANNEL'),
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'default' => env('MAIL_MAILER', null),
+    'mailers' => [
+        'smtp' => [
+            'encryption' => env('MAIL_ENCRYPTION', null),
+            'host' => env('MAIL_HOST', null),
+            'password' => env('MAIL_PASSWORD', ''),
+            'port' => env('MAIL_PORT', null),
+            'username' => env('MAIL_USERNAME', ''),
+        ],
+        'sendmail' => [
+            'path' => env('MAIL_SENDMAIL_PATH', null),
+        ],
+        'log' => [
+            'channel' => env('MAIL_LOG_CHANNEL', null),
+        ],
+    ],
 ];
