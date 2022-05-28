@@ -1,3 +1,37 @@
-<p>This is the default markup for component ReCaptcha3</p>
+<div class="content gc7">
 
-<small>You can delete this file if you want</small>
+    {# <PRE>
+        {{ dump(post) }}
+    </PRE> #}
+
+    <h3>{{ this.page.description }}</h3>
+    <hr>
+    <div id="form-response">
+        {% if post and score %}
+            Score: {{ score }}<br>
+            <div class="green">{{ respOk }}</div>
+        {% elseif post %}
+        <div class="red">
+            <b>Submitted fail !</b>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="content gc7">
+    <div class="green">{{ sitekey }}</div>
+
+    <form action="/tr3" method="POST" id="form-email">
+
+        <input type="hidden" name="description" value="{{ this.page.description }}" />
+
+        <div class="mb-3">
+            <label for="email" class="form-label">
+                Votre email
+            </label>
+            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="{{ sitekey }}" data-callback='onSubmit' data-action='submit'>Submit</button>
+    </form>
+</div>
