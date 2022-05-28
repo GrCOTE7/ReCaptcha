@@ -1,6 +1,8 @@
 
 # A WinterCMS deposit for Google's reCaptcha (v3)
 
+Espace de dial : [![Discord](https://img.shields.io/discord/816852513684193281?label=discord&style=flat-square)](https://discord.com/channels/816852513684193281/817881442125742160)
+
 The goal is to perform a simple form to works with WinterCMS system Ajax 's approach + reCaptcha of Google (v3 here)
 
 ## 8 (7 + 1) steps to be able to help

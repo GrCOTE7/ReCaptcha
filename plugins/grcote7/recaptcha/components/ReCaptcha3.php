@@ -52,39 +52,36 @@ class ReCaptcha3 extends ComponentBase
 
 	public function End()
 	{
-		$response = $_POST ?? null;
-		if ($response) {
-			// var_dump($response);
-			$method = $_SERVER['REQUEST_METHOD'];
-			if ('POST' == $method && isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
-				$responseExists = true;
+		// var_dump($response);
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ('POST' == $method && isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+			$responseExists = true;
 
-				$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . env('RECAPTCHA_SECRET_KEY') . "&response={$_POST['g-recaptcha-response']}";
-				// exit($url);
+			$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . env('RECAPTCHA_SECRET_KEY') . "&response={$_POST['g-recaptcha-response']}";
+			// exit($url);
 
-				if (function_exists('curl_version')) {
-					$curl = curl_init($url);
-					curl_setopt($curl, CURLOPT_HEADER, false);
-					curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-					curl_setopt($curl, CURLOPT_TIMEOUT, 1);
-					curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-					$response = curl_exec($curl);
-				} else {
-					$response = file_get_contents($url);
-				}
-				$response = json_decode($response);
+			if (function_exists('curl_version')) {
+				$curl = curl_init($url);
+				curl_setopt($curl, CURLOPT_HEADER, false);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+				$response = curl_exec($curl);
+			} else {
+				$response = file_get_contents($url);
+			}
+			$response = json_decode($response);
 
-				// echo '<PRE>';
-				// print_r($response);
-				// echo '</PRE>';
+			// echo '<PRE>';
+			// print_r($response);
+			// echo '</PRE>';
 
-				if ($response->success) {
-					$sender  = $_POST['email'] ?? '???';
-					$headers = "From: Form Feedback <${sender}>";
-					mail('lio@bl.com', 'Test TR par ' . $sender, 'ok', $headers);
-					$this->page['score']  = 456;
-					$this->page['respOk'] = 'Formulaire bien soumis par ' . $sender . ' !';
-				}
+			if ($response->success) {
+				$sender  = $_POST['email'] ?? '???';
+				$headers = "From: Form Feedback <${sender}>";
+				mail('lio@bl.com', 'Test TR par ' . $sender, 'ok', $headers);
+				$this->page['score']  = 456;
+				$this->page['respOk'] = 'Formulaire bien soumis par ' . $sender . ' !';
 			}
 		}
 	}
