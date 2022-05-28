@@ -6,45 +6,9 @@ is_hidden = 0
 
 [recaptcha4]
 ==
-<?php
-use Cache;
-
-function onStart(){
-    $this['sitekey']= env('RECAPTCHA_SITE_KEY');
-
-    Cache::flush();
-    $this->addJs('https://www.google.com/recaptcha/api.js');
-    // echo $_SERVER['REMOTE_ADDR'];
-}
-?>
-==
-<script>
-    function onSubmit(token) {
-        console.log('Soumis');
-        document.getElementById("form-email").submit();
-    }
-</script>
-
-<div class="content gc7">
-    <h3>{{ this.page.description }}</h3>
+<div class="linksgc7">
+    <a href="http://recaptcha/tr4">Tr4</a> |
+    <a href="http://recaptcha/tr4?_token=abc&email=djksufhds@gg.com&recaptcha-response=nimportequoi">Tr4 Params</a>
 </div>
 
-<div class="content gc7">
-    {% component 'recaptcha3' %}
-</div>
-
-<div class="content gc7">
-    <form action="/tr4" method="POST" id="form-email">
-
-        <input type="hidden" name="description" value="{{ this.page.description }}" />
-
-        <div class="mb-3">
-            <label for="email" class="form-label">
-                Votre email
-            </label>
-            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control"/>
-        </div>
-
-        <button type="submit" class="btn btn-primary g-recaptcha" data-sitekey="{{sitekey}}" data-callback='onSubmit' data-action='submit'>Submit</button>
-    </form>
-</div>
+{% component 'recaptcha4' %}

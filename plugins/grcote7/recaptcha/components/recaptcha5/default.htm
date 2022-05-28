@@ -1,3 +1,36 @@
-<p>This is the default markup for component ReCaptcha5</p>
+<div class="content gc7">
 
-<small>You can delete this file if you want</small>
+    {# <PRE>
+        {{ dump(post) }}
+    </PRE> #}
+
+    <h3>{{ this.page.description }}</h3>
+
+<div id="p-recaptcha-result"></div>
+
+<form id="re-form-email"
+    data-request="recaptcha5::onSubscribe"
+    data-request-validate
+    data-request-flash
+    data-request-update="'recaptcha5::partials/recaptcha-result': '#p-recaptcha-result'">
+
+        {{ form_token() }}
+        <div class="mb-3 blocemailggle">
+            <label for="email" class="form-label" id="label">
+                Votre email
+            </label>
+            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
+            <p class="ggle">
+                This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+            </p>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submit" nme="submit"
+        data-attach-loading
+        data-callback='onSubmit'
+        >Soumettre</button>
+
+    </form>
+</div>
