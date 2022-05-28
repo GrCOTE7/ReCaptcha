@@ -1,5 +1,5 @@
 title = "ReCaptcha 2"
-description = "Simple Form with reCaptcha v3 (No Ajax) in a single file"
+description = "Simple Form with reCaptcha v3 (No Ajax) in a single file (Juste one page)"
 url = "/tr2"
 layout = "recaptcha/recaptcha"
 is_hidden = 0
@@ -13,6 +13,63 @@ function onStart(){
     Cache::flush();
     $this->addJs('https://www.google.com/recaptcha/api.js');
     // echo $_SERVER['REMOTE_ADDR'];
+    $response=$_POST ?? null;
+    if ($response){
+        // echo 'Ok';
+        $allResponse=[];
+        foreach ($response as $key => $value) {
+            $allResponse[] = ucfirst($key).' : '.$value;
+        }
+        $this['response']=$allResponse;
+
+        $secretkey= env('RECAPTCHA_SECRET_KEY');
+
+        $this['description'] = $_POST['description'];
+
+        // echo '<PRE>';
+        //     print_r($_POST);
+        // echo '</PRE>';
+$this->page['respoK']  = 'Formulaire bien soumis';
+        $this['method'] = $_SERVER['REQUEST_METHOD'];
+        $this['responseExists'] = false;
+        $this['repGgle'] = $_POST['g-recaptcha-response'] ?? 'Captcha absent ?!?';
+
+        if ($this['method']=='POST' && isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+
+            $this['responseExists'] = true;
+
+            $url =  "https://www.google.com/recaptcha/api/siteverify?secret={$secretkey}&response={$_POST['g-recaptcha-response']}";
+            // die($url);
+
+            if (!function_exists('curl_version')){
+                $curl = curl_init($url);
+                curl_setopt($curl, CURLOPT_HEADER, false);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($curl);
+            }
+            else {
+                $response = file_get_contents($url);
+            }
+            $this->response = json_decode($response);
+
+            // echo '<PRE>';
+            //     print_r($this->response);
+            // echo '</PRE>';
+
+            if ($this->response->success) {
+                $sender = $_POST['email'] ?? '???';
+                $headers = "From: Form Feedback <$sender>";
+                // mail('lio@bl.com', 'Test TR par '.$sender, 'ok', $headers);
+                $this->page->response->respok ='Formulaire bien soumis par '.$sender.' !';;
+            }
+        }
+    }
+    else {
+        // echo 'Nok';
+        $this['response']=['No response yet...'];
+    }
 }
 ?>
 ==
@@ -23,9 +80,25 @@ function onStart(){
     }
 </script>
 
+<div class="linksgc7">
+    <a href="http://recaptcha/tr2">Tr2</a> |
+    <a href="http://recaptcha/tr2?_token=abc&email=djksufhds@gg.com&recaptcha-response=nimportequoi">Tr2 Params</a>
+</div>
+
 <div class="content gc7">
     <h3>{{ this.page.description }}</h3>
     <p>Use just this file PHP</p>
+    <hr>
+    <div id="form-response">
+        {% if this.page.response.score %}
+            Score: {{ this.page.response.score }}<br>
+            <div class="green">{{ this.page.response.respok }}</div>
+        {% else %}
+            {% for key, value in response %}
+                {{value}}.'<br>'
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>
 
 <div class="content gc7">
