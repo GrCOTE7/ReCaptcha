@@ -6,19 +6,23 @@
 
     <h3>{{ this.page.description }}</h3>
 
-<div id="p-recaptcha-result"></div>
+    <div id="recaptcha5-result">{{ result }}</div>
 
-<form onSubmit="$(this).request('onProcess'); return false;">
+    {# <form onSubmit="$(this).request('onProcess'); return false;"> #}
+    {{ form_ajax('onSubmit', {update: {
+        'recaptcha5/recaptcha5-result': '#partialRecaptcha5-result',
+    }}) }}
 
         {{ form_token() }}
         <div class="mb-3 blocemailggle">
-            <label for="email" class="form-label" id="label">
-                Votre email
-            </label>
-            <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
+        <label for="email" class="form-label" id="label">
+        Votre email
+        </label>
+        <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
         </div>
 
         <button class="btn btn-primary">Soumettre</button>
 
+    {{ form_close() }}
     </form>
 </div>
