@@ -8,11 +8,7 @@
 
 <div id="p-recaptcha-result"></div>
 
-<form id="re-form-email"
-    data-request="recaptcha5::onSubscribe"
-    data-request-validate
-    data-request-flash
-    data-request-update="'recaptcha5::partials/recaptcha-result': '#p-recaptcha-result'">
+<form onSubmit="$(this).request('onProcess'); return false;">
 
         {{ form_token() }}
         <div class="mb-3 blocemailggle">
@@ -20,17 +16,9 @@
                 Votre email
             </label>
             <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
-            <p class="ggle">
-                This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-            </p>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="submit" nme="submit"
-        data-attach-loading
-        data-callback='onSubmit'
-        >Soumettre</button>
+        <button class="btn btn-primary">Soumettre</button>
 
     </form>
 </div>

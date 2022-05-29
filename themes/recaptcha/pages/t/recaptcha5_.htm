@@ -1,7 +1,7 @@
 title = "ReCaptcha 5"
 url = "/tr5"
 layout = "recaptcha/recaptcha"
-description = "A basic Ajax form (API - Without ReCaptcha)"
+description = "A basic Ajax form (jS API - Without ReCaptcha)"
 is_hidden = 0
 
 [recaptcha5]
@@ -21,11 +21,5 @@ is_hidden = 0
     <a href="http://recaptcha/tr5?_token=abc&email=djksufhds@gg.com&recaptcha-response=nimportequoi">Tr5 Params</a>
 </div>
 
-<div class="content gc7">
-    <h3>{{ this.page.description }}</h3>
-</div>
-
-<div class="content gc7">
-    {% component 'recaptcha5' %}
-</div>
+{% component 'recaptcha5' %}
 
