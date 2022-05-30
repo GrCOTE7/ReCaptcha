@@ -3,12 +3,6 @@ url = "/"
 layout = "recaptcha/recaptcha"
 is_hidden = 0
 ==
-<?php
-function onStart() {
-    $this['lionel'] = env('LIONEL');
-}
-?>
-==
 <div class="content">
     <h3>Sweet Home</h3>
 
@@ -20,8 +14,7 @@ function onStart() {
         <li><b><a href="/tr3">TR 3</a></b> : The same as 2 but in a component (recaptcha3)<br>
         <li><b><a href="/tr4">TR 4</a></b> : A basic Ajax form (Data API - Without ReCaptcha)</li>
         <li><b><a href="/tr5">TR 5</a></b> : A basic Ajax form (jS API - Without ReCaptcha)</li>
-        <li>2do after 3→5 are done<br>
-        <a href="/tr6">Working TR 6</a> : My try to succeed ReCaptcha with WinterCMS Ajax feature - Doesn't works yet :-( ...</li>
+        <li><a href="/tr6">Working TR 6</a> : My try to succeed ReCaptcha with WinterCMS Ajax feature - Doesn't works yet :-( ...</li>
         <li>2do <a href="/tr7">TR 7</a> : Ready for you...</li>
     </ul>
 </div>
