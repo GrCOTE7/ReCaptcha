@@ -31,16 +31,27 @@ class ReCaptcha6 extends ComponentBase
 
 	public function onRun()
 	{
-		$sitekey               = env('RECAPTCHA_SITE_KEY');
-		$this->page['sitekey'] = $sitekey;
-		// echo $sitekey;
-		echo "
-        <script>
-            console.log('ok 001 : ' + '.${sitekey}.');
-            var sitekey =' . ${sitekey} . '
-        </script>";
-		$this->addJs('/plugins/grcote7/recaptcha/components/recaptcha/assets/js/initCaptcha.js');
+		$post = $this->page['post'] = $_POST;
+		if (empty($post)) {
+			// echo 'ok 1';
+			$this->Start();
+		} else {
+			// echo 'ok 2';
+			$this->End();
+		}
+	}
+
+	public function Start()
+	{
+		$sitekey = $this->page['sitekey'] = env('RECAPTCHA_SITE_KEY');
+		$this->addJs('https://www.google.com/recaptcha/api.js?render=' . $sitekey);
+		$this->addJs('/plugins/grcote7/recaptcha/components/recaptcha6/assets/js/initCaptcha6.js');
 		$this->getVars();
+	}
+
+	public function End()
+	{
+		var_dump($_POST);
 	}
 
 	public function onSubscribe()
@@ -48,7 +59,7 @@ class ReCaptcha6 extends ComponentBase
 		// $this->getVars();
 
 		// $this->page['vars'] = [123];
-
+		// var_dump($_POST);
 		$this->getVars();
 		// $this->page['vars'] = $_POST;
 
@@ -118,11 +129,10 @@ class ReCaptcha6 extends ComponentBase
 	{
 		$this->page['responseExists'] = false;
 
-		$arr['method'] = $_SERVER['REQUEST_METHOD'];
-		$arr['email']  = $_POST['email'] ?? 'Pas de email';
-		$arr['_token'] = $_POST['_token'] ?? 'Pas de token Csrf';
-		$arr['token']  = $_POST['g-recaptcha-response'] ?? 'Pas de réponse reCaptcha';
-		// $arr['réponse ggle'] = $this->page['repGgle'];
+		$arr['method']      = $_SERVER['REQUEST_METHOD'];
+		$arr['email']       = $_POST['email'] ?? 'Pas de email';
+		$arr['_token']      = $_POST['_token'] ?? 'Pas de token Csrf';
+		$arr['token']       = $_POST['token'] ?? 'Pas de réponse reCaptcha';
 		$this->page['vars'] = $arr;
 	}
 }
