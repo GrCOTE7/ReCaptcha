@@ -20,7 +20,7 @@ console.log('Site key: ' + sitekey);
 //     console.log('Form Submitted !');
 // });
 
-
+// $('#email').val('777@888.999');
 // $('#submit').on('click', function () {
 //     console.log('ok19');
 // $('#submit').preventDefault();
@@ -29,8 +29,9 @@ console.log('Site key: ' + sitekey);
             // Add your logic to submit to your backend server here.
             // console.log('ok21');
             console.log('Get GGle response : ' + token);
-            $('#token').value = token;
-            // $.post('', { "token": token });
+            // $('#token').value = token; // Bad code !!!
+            $('#token').val(token);
+            $.post('recaptcha/tr6', { "token": token });
         });
     });
 // });
