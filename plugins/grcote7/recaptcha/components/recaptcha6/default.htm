@@ -1,8 +1,13 @@
-<script src="https://www.google.com/recaptcha/api.js?render={{ sitekey }}"></script>
-
-<script>
+{# <script src="https://www.google.com/recaptcha/api.js?render={{ sitekey }}"></script> #}
+{# <script src="https://www.google.com/recaptcha/api.js" async defer></script> #}
+{# <script>
     function onSubmit(token) {
       document.getElementById("re-form-email").submit();
+    }
+  </script> #}
+  <script>
+    function onSubmit(token) {
+      document.getElementById("form-email").submit();
     }
   </script>
 
@@ -10,17 +15,15 @@
     <hr>
     <p>The reCaptcha component is added</p>
 
+    {# {{ sitekey }} #}
+
     <div class="{% if  vars['method']== 'GET' %}green{% else %}red{% endif %}">
         {% for key, val in vars %}
             {{ key|title }} : {{ val }}<br>
         {% endfor %}
     </div>
 
-    <div id="result">
-        RESULT
-    </div>
-
-    <div id="p-recaptcha-result">
+    <div id="recaptcha6-result">
         CAPTCHA RESULT
     </div>
 {#
@@ -30,11 +33,13 @@
     data-request-flash
     data-request-update="'recaptcha::partials/recaptcha-result': '#p-recaptcha-result'">
     #}
-    <form id="re-form-email"
-    data-request="recaptcha::onSubscribe"
+    <form id="form-email"
+    data-request="recaptcha6::onSubscribe"
     data-request-validate
     data-request-flash
-    data-request-update="'recaptcha::partials/recaptcha-result': '#p-recaptcha-result'">
+    data-request-update="'recaptcha6::partials/recaptcha6-result': '#recaptcha6-result'">
+
+    <div id="html_element"></div>
 
         {{ form_token() }}
         <div class="mb-3 blocemailggle">
@@ -42,14 +47,11 @@
                 Votre email
             </label>
             <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
-            <p class="ggle">
-                This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-            </p>
         </div>
 
-        <input type="text" name="g-recaptcha-response" id="g-recaptcha-response"></input>
+        <input type="hidden" id="sitekey" value="{{ sitekey }}" />
+        <input type="hidden" id="token" class="g-recaptcha"/>
+        {# <input type="hidden" id="g-recaptcha-response" class="g-recaptcha"/> #}
 
         {# <div id="recaptcha" class="g-recaptcha"></div> #}
 
@@ -65,13 +67,16 @@
         data-size="invisible">
         </div> #}
 
-        <button type="submit" class="btn btn-primary" id="submit" nme="submit"
+        <button type="submit" class="btn btn-primary" id="submit"
         data-attach-loading
-        {# data-sitekey="SITE_KEY" #}
-        data-callback='onSubmit'
+        {# data-sitekey="{{ sitekey }}" #}
+        {# data-callback='onSubmit' #}
         {# data-action='submit' #}
         >Soumettre</button>
 
-    </form>
+    {# </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+    </script> #}
 </div>
 
