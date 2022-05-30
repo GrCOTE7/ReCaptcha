@@ -17,7 +17,7 @@
 
     {# {{ sitekey }} #}
 
-    <div class="{% if  vars['method']== 'GET' %}green{% else %}red{% endif %}">
+    <div class="{% if vars['method']== 'GET' %}green{% else %}red{% endif %}">
         {% for key, val in vars %}
             {{ key|title }} : {{ val }}<br>
         {% endfor %}
