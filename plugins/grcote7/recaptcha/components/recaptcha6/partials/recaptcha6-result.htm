@@ -1,9 +1,10 @@
-{#
-<script src="/plugins/grcote7/prospects/components/recaptcha/assets/js/respCaptcha.js"></script> #}
 ReCaptcha 6 Result oOo<br>
-{# {{ dump(data) }} #}
-<div class="red">
+{% if vars['success']!= 1 %}
+    {% set vars = vars['error-codes'] %}
+{% endif %}
+
+<div class="{% if vars['success']== 1 %}green{% else %}red{% endif %}">
     {% for key, val in vars %}
-    {{ key|title }} : {{ val }}<br>
+        {{ key|title }} : {{ val }}<br>
     {% endfor %}
 </div>

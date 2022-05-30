@@ -1,47 +1,13 @@
 console.log('Ok - init reCaptcha6');
 var sitekey = document.getElementById("sitekey").value;
 console.log('Site key: ' + sitekey);
+$('#submit').css('display', 'none');
 
-// function onSubmit(token) {
-//     console.log('888');
-//     // document.getElementById("form-email").submit();
-// }
-
-// grecaptcha.execute(sitekey).then(function () {
-//     // Add your logic to submit to your backend server here.
-//     console.log('ok21');
-// });
-
-// grecaptcha.execute();
-
-
-// $('#recaptcha6-result').on('ajaxUpdate', function () {
-//     // document.getElementById("re-form-email").submit();
-//     console.log('Form Submitted !');
-// });
-
-// $('#email').val('777@888.999');
-// $('#submit').on('click', function () {
-//     console.log('ok19');
-// $('#submit').preventDefault();
-    grecaptcha.ready(function () {
-        grecaptcha.execute(sitekey).then(function (token) {
-            // Add your logic to submit to your backend server here.
-            // console.log('ok21');
-            console.log('Get GGle response : ' + token);
-            // $('#token').value = token; // Bad code !!!
-            $('#token').val(token);
-            $.post('recaptcha/tr6', { "token": token });
-        });
+grecaptcha.ready(function () {
+    grecaptcha.execute(sitekey).then(function (token) {
+        console.log('Get GGle response : ' + token);
+        $('#token').val(token);
+        $.post('recaptcha/tr6', { "token": token });
+        $('#submit').css('display', 'block');
     });
-// });
-
-
-// function onSubmit(token) {
-//     document.getElementById("re-form-email").submit();
-// }
-
-
-// $('#recaptcha5-result').on('ajaxUpdate', function(){
-//     console.log('Form Submitted !');
-// });
+});
