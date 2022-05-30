@@ -1,7 +1,5 @@
 console.log('Start');
 
-function onSubmit() {
-    // alert('ok');
+$('#recaptcha5-result').on('ajaxUpdate', function(){
     console.log('Form Submitted !');
-    document.getElementById("form-email").submit();
-}
+});

@@ -4,57 +4,11 @@ layout = "recaptcha/recaptcha"
 description = "A basic Ajax form (jS API - Without ReCaptcha)"
 is_hidden = 0
 
+[recaptcha5]
 ==
-<?php
-use Cache;
-
-function onStart(){
-    $this->onSubmit();
-    // Cache::flush();
-    // $this->addJs('https://www.google.com/recaptcha/api.js');
-    // echo $_SERVER['REMOTE_ADDR'];
-}
-
-function onSubmit(){
-    $this['result'] = 777;
-}
-
-
-?>
-==
-{# [recaptcha5] #}
 <div class="linksgc7">
     <a href="http://recaptcha/tr5">Tr5</a> |
     <a href="http://recaptcha/tr5?_token=abc&email=djksufhds@gg.com&recaptcha-response=nimportequoi">Tr5 Params</a>
 </div>
 
-{# {% component 'recaptcha5' %} #}
-
-<div class="content gc7">
-
-    {# <PRE>
-        {{ dump(post) }}
-    </PRE> #}
-
-    <h3>{{ this.page.description }}</h3>
-
-    <div id="partialRecaptcha5-result"></div>
-
-    {# <form onSubmit="$(this).request('onProcess'); return false;"> #}
-    {{ form_ajax('onSubmit', {update: {
-        'recaptcha5/recaptcha5-result': '#partialRecaptcha5-result',
-    }}) }}
-
-        {{ form_token() }}
-        <div class="mb-3 blocemailggle">
-        <label for="email" class="form-label" id="label">
-        Votre email
-        </label>
-        <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
-        </div>
-
-        <button class="btn btn-primary">Soumettre</button>
-
-    {{ form_close() }}
-    </form>
-</div>
+{% component 'recaptcha5' %}

@@ -8,9 +8,8 @@
 
     <div id="recaptcha5-result">{{ result }}</div>
 
-    {# <form onSubmit="$(this).request('onProcess'); return false;"> #}
     {{ form_ajax('onSubmit', {update: {
-        'recaptcha5/recaptcha5-result': '#partialRecaptcha5-result',
+        'recaptcha5::partials/recaptcha5-result': '#recaptcha5-result',
     }}) }}
 
         {{ form_token() }}
@@ -21,7 +20,7 @@
         <input type="email" name="email" id="email" placeholder="The best !" value="TestEmail@GG.com" class="form-control">
         </div>
 
-        <button class="btn btn-primary">Soumettre</button>
+        <button class="btn btn-primary" data-attach-loading id="form-email">Soumettre</button>
 
     {{ form_close() }}
     </form>

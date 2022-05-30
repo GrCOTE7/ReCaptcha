@@ -6,7 +6,6 @@
 
 namespace GrCOTE7\ReCaptcha\Components;
 
-use Cache;
 use Cms\Classes\ComponentBase;
 
 class ReCaptcha3 extends ComponentBase
@@ -40,7 +39,6 @@ class ReCaptcha3 extends ComponentBase
 			// echo 'ok 2';
 			$this->End();
 		}
-		// Cache::flush();
 	}
 
 	public function Start()
@@ -80,7 +78,7 @@ class ReCaptcha3 extends ComponentBase
 				$sender  = $_POST['email'] ?? '???';
 				$headers = "From: Form Feedback <${sender}>";
 				mail('lio@bl.com', 'Test TR par ' . $sender, 'ok', $headers);
-				$this->page['score']  = 456;
+				$this->page['score']  = $response->score;
 				$this->page['respOk'] = 'Formulaire bien soumis par ' . $sender . ' !';
 			}
 		}

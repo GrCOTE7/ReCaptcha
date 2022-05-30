@@ -29,7 +29,7 @@ function onStart(){
         // echo '<PRE>';
         //     print_r($_POST);
         // echo '</PRE>';
-$this->page['respoK']  = 'Formulaire bien soumis';
+
         $this['method'] = $_SERVER['REQUEST_METHOD'];
         $this['responseExists'] = false;
         $this['repGgle'] = $_POST['g-recaptcha-response'] ?? 'Captcha absent ?!?';
@@ -95,7 +95,7 @@ $this->page['respoK']  = 'Formulaire bien soumis';
             <div class="green">{{ this.page.response.respok }}</div>
         {% else %}
             {% for key, value in response %}
-                {{value}}.'<br>'
+                {{value}}<br>
             {% endfor %}
         {% endif %}
     </div>

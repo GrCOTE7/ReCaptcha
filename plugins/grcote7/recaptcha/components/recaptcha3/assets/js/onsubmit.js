@@ -1,7 +1,6 @@
 console.log('Start');
 
-function onSubmit(token) {
-    // alert('ok');
+function onSubmit() {
     console.log('Form Submitted !');
     document.getElementById("form-email").submit();
 }
