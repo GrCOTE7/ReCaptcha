@@ -7,7 +7,7 @@ grecaptcha.ready(function () {
     grecaptcha.execute(sitekey).then(function (token) {
         console.log('Get GGle response : ' + token);
         $('#token').val(token);
-        $.post('recaptcha/tr6', { "token": token });
+        // $.post('recaptcha/tr6', { "token": token });
         $('#submit').css('display', 'block');
     });
 });

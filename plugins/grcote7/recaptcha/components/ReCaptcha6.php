@@ -86,7 +86,7 @@ class ReCaptcha6 extends ComponentBase
 
 	public function getVars()
 	{
-		$this->page['responseExists'] = false;
+		// $this->page['responseExists'] = false;
 
 		$arr['method']      = $_SERVER['REQUEST_METHOD'];
 		$arr['email']       = $_POST['email'] ?? 'Pas de email';
