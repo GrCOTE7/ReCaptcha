@@ -2,48 +2,104 @@
 ==
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-
-        {% set title = this.page.title %}
-
-        {% if title == "Home" %}
-            {# Above the url of page we worl on #}
-            {% set URL = "/tr6" %}
-        {% else %}
-            {% set URL = "/" %}
-        {% endif%}
+        {% set title = this.page.title %} {% if title == "Home" %} {# Above the
+        url of page we worl on #} {% set URL = "/tr6" %} {% else %} {% set URL =
+        "/" %} {% endif%}
 
         <a class="navbar-brand" href="{{ URL }}">{{ title }}</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/t">Test</a>
+                    <a class="nav-link active" aria-current="page" href="/t"
+                        >Test</a
+                    >
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
                         Recaptcha
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/tr1">Recaptcha 1 - Basic case 2 files</a></li>
-                        <li><a class="dropdown-item" href="/tr2">Recaptcha 2 - Basic case 1 file</a></li>
-                        <li><a class="dropdown-item" href="/tr3">Recaptcha 3 - Same as 2 in component</a></li>
-                        <li><a class="dropdown-item" href="/tr4">Recaptcha 4 - Basic Ajax Form (Without reCaptcha)</a></li>
-                        <li><a class="dropdown-item" href="/tr5">Recaptcha 5 - Idem 4 by jS API (Without reCaptcha)</a></li>
-                        <li><a class="dropdown-item" href="/tr6">Recaptcha 6 - My try (GC7)</a></li>
-                        <li><a class="dropdown-item" href="/tr7">Recaptcha 7 - For you</a></li>
+                    <ul
+                        class="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink"
+                    >
+                        <li>
+                            <a class="dropdown-item" href="/tr1"
+                                >Recaptcha 1 - Basic case 2 files</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tr2"
+                                >Recaptcha 2 - Basic case 1 file</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tr3"
+                                >Recaptcha 3 - Same as 2 in component</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tr4"
+                                >Recaptcha 4 - Basic Ajax Form (Without
+                                reCaptcha)</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tr5"
+                                >Recaptcha 5 - Idem 4 by jS API (Without
+                                reCaptcha)</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tr6"
+                                >Recaptcha 6 - My try (GC7)</a
+                            >
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tr7"
+                                >Recaptcha 7 - For you</a
+                            >
+                        </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/momo/une">Momo</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Momo</a>
+                    <ul class="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="/momo">Casba</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/momo/une">La Une</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/momo/about">About Momo</a>
+                        </li>
+                    </ul>
                 </li>
-                {# <li class="nav-item">
+                {#
+                <li class="nav-item">
                     <a class="nav-link" href="/account">Compte</a>
-                </li> #}
+                </li>
+                #}
             </ul>
         </div>
     </div>
